@@ -41,5 +41,9 @@
     "supertest": "^6.2.2",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
+  },
+  "peerDependencies": {
+    "@financial-times/o-colors": "^6.5.1",
+    "@financial-times/o-typography": "^7.3.6"
   }
 }
