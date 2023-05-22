@@ -1,50 +1,46 @@
 # Financial Times Technical Test
+Simple UI showing securities quotes from Finencial Times securities quotes API. This is task given as Test as a step in a process for Lead Software Engineer - FT Enterprise position.
 
-The test is in two parts. Please create a branch to do you work and tell us when you have finished your work so we can review your branch.  We expect that this exercise should take about 90 minutes. This is a guideline, not a fixed limit. Don’t feel rushed to complete the exercise, but work on it as and when you have time.
-
-You can either do both exercises at home, or pick one to send in and do the other as a pairing exercise with us during the technical interview.
-
-We do not have a preference in terms of the way you choose to complete the technical test and we do not factor your choice into our hiring decision. We offer the choice because some candidates find pairing exercise interviews prohibitively nerve-wracking and we want you to be able to show us thought-process for writing software, not how well you cope under extreme pressure.
-
-You can build the templates in either JSX or Handlebars, depending on your preference.
-
-## OPTION 1 - AT HOME:
-Please do both exercises before sending in. Remember, you don’t have to do it all in one sitting.
-
-## OPTION 2 - PART AT HOME, PART PAIRING:
-Please do one of the exercises before sending in, and we will do the other exercise as a pairing exercise.
-
-For the at home section, we recommend picking the exercise that plays to your strengths and is most relevant to the role you are interested in (e.g. if you are applying for a role where the job description states that most of the work is client-side, build the UI).
-
-## Exercise: Retrieve the data
+Exercises: 
+1. Retrieve the data
 Use the [securities quotes api](#using-our-securities-quotes-api) (also known as stock prices) to get the data for the items below and output the results in plain HTML.
-
-## Exercise: Build the UI
+2. Build the UI
 Build the component in the design below. If you are doing this one at home and the other part pairing in the office, you can use this [sample JSON](test/fixtures/securities-response.json).
 
 ![Screenshot of an example securities data component](https://user-images.githubusercontent.com/51677/67555386-b6c5fc80-f700-11e9-86bd-55e975be0441.png)
 
 
-The project must have:
-- tests. We don't expect comprehensive tests, we would like to see what you can do
-- documentation. We don't expect comprehensive documentation, we would like to see what you think is important to document
-- error handling
+## My submission on which one of these points addressed in the assignment
 
 The project could:
-- Be responsive
-- Be accessible
-- Not be reliant on client-side frameworks (i.e. Angular, React) or libraries like jQuery
-- Built using Javascript and node.js
-- Use Origami Components
-- Be progressively enhanced
-- Have a similar look and feel as ft.com
-- Perform well over 3G networks
+- Be responsive \
+-- Items are adjusted to fit the resizable screen size.  
 
-Please specify in your submission which one of these points you have addressed and how (e.g. in the `README` of your submission repo) along with documentation, testing, or any other aspects you consider relevant.
+- Be accessible \
+-- The main "SecuritiesQuotes" component is compliant with WAI-ARIA.
+
+- Not be reliant on client-side frameworks (i.e. Angular, React) or libraries like jQuery \
+-- For the sake of simplicity and following the requirements I have not used any client-side lib.
+It has only one meaningful component with no interactions. No neead for extra code.
+
+- Built using Javascript and node.js \
+-- Yes it is. But there are many other approaches. Currently, the code is server-side rendered with React components but it could be rehydrated after the user sees the initial HTML page load. Other toolchains can be used for that purpose like Gatsby.js for example which offers hybrid SSR mods and a lot of other configurations out of the box. What about TypeScript? I haven't started a pure JS project for years.
+
+- Use Origami Components \
+-- I haven't seen the need to add JS components. I used only "o-typography" and "o-color" from Origami.
+
+- Be progressively enhanced \
+-- If you meant rehydration of static HTML it could be done yea. If you mean stacking commits in git, usually in my projects I use "commitizen", "cz-conventional-changelog" and "standard-version" NPM packages to standardize and lint commit messages then automaticity generate changelog based on that. Software releases are based on Semantic Versioning.
+
+- Have a similar look and feel as ft.com \
+-- It has a similar look and feels as the task was described. Nothing more nothing less.
+- Perform well over 3G networks \
+-- A lot can be said here. From HTTP protocol versioning, "brotli" over GZIP compression, WEBP and AVIF images. Along with bundling, lazy loading, tree-shaking (CSS, JS, SVG, ...) and CDNs, load balancers, and so on.
+
 
 ## Prerequisites
 
-Running this project requires [Node.js](https://nodejs.org/en/) 16.x or greater, and [npm](https://www.npmjs.com/).
+Running this project requires [Node.js](https://nodejs.org/en/) 18.x or greater, and [npm](https://www.npmjs.com/).
 
 ## Getting started
 
@@ -54,12 +50,10 @@ Running this project requires [Node.js](https://nodejs.org/en/) 16.x or greater,
    - Used JSX? http://localhost:3000/jsx
    - Used Handlebars? http://localhost:3000/handlebars
 1. Run tests with `npm test`.
-1. Make changes to the template code by editing either `views/handlebars/home.handlebars` or `views/jsx/Components/Home.jsx` depending on whether you prefer using Handlebars or JSX, and for client-side code `src/styles.scss` and `src/main.js` for CSS and JS.
-   - [Handlebars quick guide](#Handlebars)
-1. For any server-side code you write, start in `app.js`.
+1. You man need to run `npx @financial-times/origami-workshop` to build FT Origami CSS if not loading
 
 
-## Using our Securities Quotes API
+## Using Securities Quotes API
 
 To fetch the day's percentage change for a security you can use our Securities Quotes API.
 
@@ -85,70 +79,3 @@ We would like you to display the information from the following symbols (these a
 | Pound/Dollar    | `GBPUSD`   |
 | Brent Crude Oil | `IB.1:IEU` |
 
-
-## Handlebars
-
-Handlebars is a simple templating language.
-
-We have set this test up to allow you to use either JSX or Handlebars. You can use a different templating language if you prefer, but you will need to add it.
-
-Here is a quick guide that should cover all the bits you need:
-
-OUTPUT data passed to the template
-- Data passed in:
-
-		{name: "testUser123"}
-- Handlebars template:
-		
-		Hi {{name}}
-- Output:
-		
-		Hi testUser123
-
-Also supports dot notation for passing in more complex objects
-- Data passed in:
-		
-		{user: {name: "testUser123"}}
-- Handlebars template:
-		
-		Hi {{user.name}}
-- Output:
-		
-		Hi testUser123
-
-Alternatively
-- Data passed in:
-		
-		{user: {name: "testUser123"}}
-- Handlebars template:
-		
-		{{#with user}}{{name}}{{/with}}
-- Output:
-		
-		Hi testUser123
-
-ITERATION
-- Data passed in:
-		
-		{fruit: ["apples", "pears", "oranges"]}
-- Handlebars template:
-		
-		{{#each fruit}}-{{this}}- {{/fruit}}
-- Output:
-		
-		-apples- -pears- -oranges-
-
-CONDITIONALS
-- Data passed in:
-		
-		{isLoggedIn: true}
-- Handlebars template:
-		
-		{{#if isLoggedIn}} My account {{else}} Log in {{/if}} - 
-		{{#unless isLoggedIn}} Register {{else}} Logged in {{/unless}}
-- Output:
-		
-		My account - Logged in
-
-Full docs: https://handlebarsjs.com/guide/
- 
