@@ -1,4 +1,45 @@
+@import "@financial-times/o-colors/main";
+@import "@financial-times/o-typography/main";
+
+@include oColors();
+@include oTypography();
+
 html {
-	background: #fff;
-	color: #333;
+  background: #fff;
+  color: #333;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+body {
+  background-color: oColorsByUsecase("page", "background");
+  margin: 0 !important;
+  padding: 20px;
+  min-height: 100%;
+  flex: 1;
+}
+
+.securities-quotes {
+  &-symbols-list {
+    background-color: var(--o-colors-slate);
+    color: var(--o-colors-white);
+
+    display: flex;
+    flex-flow: row wrap;
+    padding: 3px 7.5px;
+    white-space: nowrap;
+
+    > li {
+      padding: 1.5px 7.5px;
+    }
+  }
+
+  &-up {
+    color: var(--o-colors-wasabi);
+  }
+
+  &-down {
+    color: var(--o-colors-candy);
+  }
 }
