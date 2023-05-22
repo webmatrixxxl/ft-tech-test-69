@@ -19,6 +19,7 @@
   "author": "Financial Times Ltd.",
   "license": "MIT",
   "dependencies": {
+    "@babel/preset-react": "^7.18.6",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.2",
     "react": "^18.2.0",
